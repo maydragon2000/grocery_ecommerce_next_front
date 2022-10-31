@@ -31,6 +31,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
               type="email"
               placeholder="Email"
               Icon={FiMail}
+              field="Email"
             />
             <Error errorName={errors.registerEmail} />
           </div>
@@ -43,6 +44,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
               type="password"
               placeholder="Password"
               Icon={FiLock}
+              field="Password"
             />
 
             <Error errorName={errors.password} />

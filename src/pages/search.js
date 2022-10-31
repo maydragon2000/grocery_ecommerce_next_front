@@ -21,6 +21,8 @@ const Search = ({ products }) => {
     setIsLoading(false);
   }, [products]);
 
+  // console.log(visibleProduct, "visibleProduct");
+
   return (
     <Layout title="Search" description="This is search page">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">

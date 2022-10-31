@@ -80,7 +80,7 @@ const Home = ({ products, popularProducts, discountProducts }) => {
               <div className="flex">
                 <div className="w-full">
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                    {popularProducts?.slice(0, 18).map((product) => (
+                    {popularProducts?.slice(0, 500).map((product) => (
                       <ProductCard key={product._id} product={product} />
                     ))}
                   </div>
@@ -117,7 +117,7 @@ const Home = ({ products, popularProducts, discountProducts }) => {
               <div className="flex">
                 <div className="w-full">
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                    {discountProducts?.slice(0, 18).map((product) => (
+                    {discountProducts?.slice(0, 500).map((product) => (
                       <ProductCard key={product._id} product={product} />
                     ))}
                   </div>
@@ -141,7 +141,7 @@ export const getStaticProps = async () => {
     props: {
       products: products,
       discountProducts: discountProducts,
-      popularProducts: popularProducts.slice(0, 50),
+      popularProducts: popularProducts.slice(0, 500),
     },
     revalidate: 60,
   };

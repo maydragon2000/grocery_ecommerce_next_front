@@ -34,6 +34,7 @@ const ResetPassword = ({ setShowResetPassword, setModalOpen }) => {
               type="email"
               placeholder="Your Register Email"
               Icon={FiMail}
+              field="Email"
             />
             <Error errorName={errors.verifyEmail} />
           </div>

@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Image from 'next/image';
 import { useCart } from 'react-use-cart';
 import { IoBagAddSharp, IoAdd, IoRemove } from 'react-icons/io5';
+import { useRouter } from 'next/router';
 
 import Price from '@component/common/Price';
 import Discount from '@component/common/Discount';
 import ProductModal from '@component/modal/ProductModal';
+import { SidebarContext } from '@context/SidebarContext';
+
 
 const ProductCard = ({ product }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { items, addItem, updateItemQuantity, inCart } = useCart();
+  const router = useRouter();
+  const { setIsLoading, isLoading } = useContext(SidebarContext);
+
+  const handleMoreInfo = (slug) => {
+
+    router.push(`/product/${slug}`);
+    setIsLoading(!isLoading);
+  };
 
   const handleAddItem = (p) => {
     const newItem = {
@@ -29,7 +40,7 @@ const ProductCard = ({ product }) => {
 
       <div className="group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center bg-white relative">
         <div
-          onClick={() => setModalOpen(!modalOpen)}
+          onClick={() => handleMoreInfo(product.slug)}
           className="relative flex justify-center w-full cursor-pointer"
         >
           {product.quantity <= 0 && (

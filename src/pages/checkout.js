@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import dynamic from 'next/dynamic';
 import { CardElement } from '@stripe/react-stripe-js';
 import Link from 'next/link';
@@ -42,6 +42,7 @@ const Checkout = () => {
     cartTotal,
     isCheckoutSubmit,
   } = useCheckoutSubmit();
+
   shippingCost = 10;
   return (
     <>
@@ -63,6 +64,7 @@ const Checkout = () => {
                           name="firstName"
                           type="text"
                           placeholder="First Name"
+                          field="First Name"
                         />
                         <Error errorName={errors.firstName} />
                       </div>
@@ -74,6 +76,7 @@ const Checkout = () => {
                           name="lastName"
                           type="text"
                           placeholder="Last name"
+                          field="Last name"
                         />
                         <Error errorName={errors.lastName} />
                       </div>
@@ -85,6 +88,7 @@ const Checkout = () => {
                           name="email"
                           type="email"
                           placeholder="youremail@gmail.com"
+                          field="Email"
                         />
                         <Error errorName={errors.email} />
                       </div>
@@ -96,7 +100,7 @@ const Checkout = () => {
                           name="contact"
                           type="tel"
                           placeholder="Mobile Number"
-                          
+                          field="Mobile Number"
                         />
 
                         <Error errorName={errors.contact} />
@@ -117,6 +121,7 @@ const Checkout = () => {
                           name="address"
                           type="text"
                           placeholder="Street Address, Building No."
+                          field="Address"
                         />
                         <Error errorName={errors.address} />
                       </div>
@@ -127,20 +132,22 @@ const Checkout = () => {
                           
                           name="city"
                           type="text"
-                          placeholder="Area"
+                          placeholder="City"
+                          field="City"
                         />
                         <Error errorName={errors.city} />
                       </div>
 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <InputArea
+                        {/* <InputArea
                           register={register}
                           
                           name="country"
                           type="text"
-                          placeholder="City"
+                          placeholder="Country"
+                          field="Country"
                         />
-                        <Error errorName={errors.country} />
+                        <Error errorName={errors.country} /> */}
                       </div>
 
                      {/*  <div className="col-span-6 sm:col-span-3 lg:col-span-2">

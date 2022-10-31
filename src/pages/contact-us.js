@@ -87,6 +87,7 @@ const ContactUs = () => {
                         name="name"
                         type="text"
                         placeholder="Inter Your Name"
+                        field="Your Name"
                       />
                       <Error errorName={errors.name} />
                     </div>
@@ -97,6 +98,7 @@ const ContactUs = () => {
                         name="email"
                         type="email"
                         placeholder="Inter Your Email"
+                        field="Email"
                       />
                       <Error errorName={errors.email} />
                     </div>
@@ -108,6 +110,7 @@ const ContactUs = () => {
                       name="subject"
                       type="text"
                       placeholder="Inter Your Subject"
+                      field="Subject"
                     />
                     <Error errorName={errors.subject} />
                   </div>

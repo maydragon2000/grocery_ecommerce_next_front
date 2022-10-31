@@ -94,6 +94,7 @@ const ForgetPassword = () => {
                       type="email"
                       placeholder="Email"
                       Icon={FiMail}
+                      field="Email"
                     />
                     <Error errorName={errors.registerEmail} />
                   </div>
@@ -105,6 +106,7 @@ const ForgetPassword = () => {
                       type="password"
                       placeholder="Password"
                       Icon={FiLock}
+                      field="Password"
                     />
 
                     <Error errorName={errors.password} />

@@ -35,7 +35,7 @@ const FeatureCategory = () => {
                   }
                   className="flex w-full h-full items-center justify-center rounded-lg  bg-blue-50 p-4 cursor-pointer transition duration-200 ease-linear transform "
                 >
-                  <div className="flex items-center justify-center flex-col">
+                  <div className="flex items-center justify-center flex-col home_categories_wrap_inner">
                     <div className='mb-2'>
                       <Image
                         src={category.icon}

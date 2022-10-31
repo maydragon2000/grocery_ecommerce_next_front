@@ -106,7 +106,7 @@ const useCheckoutSubmit = () => {
       contact: data.contact,
       email: data.email,
       city: data.city,
-      country: data.country,
+      country: "United Arab Emirates",
       zipCode: data.zipCode,
       shippingOption: data.shippingOption,
       paymentMethod: data.paymentMethod,

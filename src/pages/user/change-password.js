@@ -52,6 +52,7 @@ const ChangePassword = () => {
                     name="email"
                     type="email"
                     placeholder="Your Email"
+                    field="Email"
                   />
                   <Error errorName={errors.email} />
                 </div>
@@ -62,6 +63,7 @@ const ChangePassword = () => {
                     name="currentPassword"
                     type="password"
                     placeholder="Your Current Password"
+                    field="Current Password"
                   />
                   <Error errorName={errors.currentPassword} />
                 </div>
@@ -72,6 +74,7 @@ const ChangePassword = () => {
                     name="newPassword"
                     type="password"
                     placeholder="Your New Password"
+                    field="New Password"
                   />
                   <Error errorName={errors.newPassword} />
                 </div>

@@ -100,6 +100,7 @@ const UpdateProfile = () => {
                           name="name"
                           type="text"
                           placeholder="Full Name"
+                          field="Full Name"
                         />
                         <Error errorName={errors.name} />
                       </div>
@@ -111,6 +112,7 @@ const UpdateProfile = () => {
                           name="address"
                           type="text"
                           placeholder="Your Address"
+                          field="Address"
                         />
                         <Error errorName={errors.address} />
                       </div>
@@ -122,6 +124,7 @@ const UpdateProfile = () => {
                           name="phone"
                           type="tel"
                           placeholder="Your Mobile Number"
+                          fielld="Mobile Number"
                         />
                         <Error errorName={errors.phone} />
                       </div>
@@ -133,6 +136,7 @@ const UpdateProfile = () => {
                           name="email"
                           type="email"
                           placeholder="Your Email"
+                          field="Email"
                         />
                         <Error errorName={errors.email} />
                       </div>

@@ -31,7 +31,7 @@ const Layout = ({ title, description, children }) => {
           <div className="hidden relative lg:block mx-auto max-w-screen-2xl py-6 px-3 sm:px-10">
             <FeatureCard />
           </div>
-          <hr className="hr-line"></hr>
+          {/* <hr className="hr-line"></hr> */}
           <div className="border-t border-gray-100 w-full">
             <Footer />
           </div>

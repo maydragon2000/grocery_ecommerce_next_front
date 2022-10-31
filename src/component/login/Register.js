@@ -30,6 +30,7 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
               type="text"
               placeholder="Full Name"
               Icon={FiUser}
+              field="Full Name"
             />
 
             <Error errorName={errors.name} />
@@ -43,6 +44,7 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
               type="email"
               placeholder="Email"
               Icon={FiMail}
+              field="Email"
             />
             <Error errorName={errors.email} />
           </div>
@@ -54,6 +56,7 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
               type="password"
               placeholder="Password"
               Icon={FiLock}
+              field="Password"
             />
 
             <Error errorName={errors.password} />
