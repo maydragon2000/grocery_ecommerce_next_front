@@ -103,11 +103,11 @@ const ProductScreen = ({ product, relatedProduct }) => {
                             {product.title}
                           </h1>
                           <p className="uppercase font-serif font-medium text-gray-500 text-base">
-                            SKU :{' '}
+                            Barcode :{' '}
                             <span className="font-bold text-gray-600">
-                              {product.sku
-                                ? product.sku
-                                : product._id.substring(18, 24)}
+                              {product.barcode
+                                ? product.barcode
+                                : ""}
                             </span>
                           </p>
                         </div>
@@ -268,10 +268,11 @@ const ProductScreen = ({ product, relatedProduct }) => {
     const { slug } = context.params;
     const products = await ProductServices.getShowingProducts();
     const product = await ProductServices.getProductBySlug(slug);
-
     let relatedProduct= [];
     if (slug) {
-      const selectProduct = products.find((product) => product.slug === slug);
+      // const selectProduct = products.find((product) => product.slug === slug);
+      const selectProduct = product;
+      console.log(selectProduct, "selectProduct");
       relatedProduct = products.filter(
         (product) => product.children === selectProduct.children
       );

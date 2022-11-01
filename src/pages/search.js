@@ -107,7 +107,6 @@ export const getServerSideProps = async (context) => {
   const { Category } = context.query;
   const { category } = context.query;
   const data = await ProductServices.getShowingProducts();
-
   let products = [];
   //service filter with parent category
   if (Category) {
@@ -128,9 +127,12 @@ export const getServerSideProps = async (context) => {
 
   //search result
   if (query) {
-    products = data.filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    );
+    
+    const result = await ProductServices.getProducts({ title: query, limit: 1000 });
+    products = Array.from(result.products)
+    // products = data.filter((product) =>
+    //   product.title.toLowerCase().includes(query.toLowerCase())
+    // );
   }
 
   return {

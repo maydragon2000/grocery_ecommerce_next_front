@@ -46,7 +46,7 @@ const FeatureCategory = () => {
                     </div>
                     <div className="">
                       <h3 className="text-base text-gray-600 font-serif font-medium leading-tight text-center ">
-                        {category.parent.toLowerCase()}
+                        {category.parent}
                       </h3>
                       {/* <ul className="pt-1 mt-1">
                         {category.children.slice(0, 3).map((children) => (
