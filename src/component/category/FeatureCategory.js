@@ -28,7 +28,7 @@ const FeatureCategory = () => {
                     router.push(
                       `/search?Category=${category.parent
                         .toLowerCase()
-                        .replace('&', '')
+                        .replace('&', '@')
                         .split(' ')
                         .join('-')}`
                     )

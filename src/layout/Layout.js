@@ -33,7 +33,7 @@ const Layout = ({ title, description, children }) => {
           </div>
           {/* <hr className="hr-line"></hr> */}
           <div className="border-t border-gray-100 w-full">
-            <Footer />
+            <Footer />                                                                                 
           </div>
         </div>
       </div>
@@ -42,3 +42,4 @@ const Layout = ({ title, description, children }) => {
 };
 
 export default Layout;
+                          

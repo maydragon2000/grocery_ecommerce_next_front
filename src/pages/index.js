@@ -80,7 +80,7 @@ const Home = ({ products, popularProducts, discountProducts }) => {
               <div className="flex">
                 <div className="w-full">
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                    {popularProducts?.slice(0, 500).map((product) => (
+                    {popularProducts?.slice(0, 100).map((product) => (
                       <ProductCard key={product._id} product={product} />
                     ))}
                   </div>
@@ -117,7 +117,7 @@ const Home = ({ products, popularProducts, discountProducts }) => {
               <div className="flex">
                 <div className="w-full">
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                    {discountProducts?.slice(0, 500).map((product) => (
+                    {discountProducts?.slice(0, 100).map((product) => (
                       <ProductCard key={product._id} product={product} />
                     ))}
                   </div>
@@ -131,30 +131,34 @@ const Home = ({ products, popularProducts, discountProducts }) => {
   );
 };
 
-export const getStaticProps = async () => {
+// export const getStaticProps = async () => {
+//   const products = await ProductServices.getShowingProducts();
+
+//   const popularProducts = products.filter((p) => p.discount === 0);
+//   const discountProducts = products.filter((p) => p.discount >= 5);
+
+//   return {
+//     props: {
+//       products: products,
+//       discountProducts: discountProducts,
+//       popularProducts: popularProducts.slice(0, 500),
+//     },
+//     revalidate: 60,
+//   };
+// };
+
+export const getServerSideProps = async () => {
   const products = await ProductServices.getShowingProducts();
 
   const popularProducts = products.filter((p) => p.discount === 0);
   const discountProducts = products.filter((p) => p.discount >= 5);
-
   return {
     props: {
       products: products,
       discountProducts: discountProducts,
-      popularProducts: popularProducts.slice(0, 500),
+      popularProducts: popularProducts.slice(0, 100),
     },
-    revalidate: 60,
   };
 };
-
-// export const getServerSideProps = async () => {
-//   const products = await ProductServices.getShowingProducts();
-
-//   return {
-//     props: {
-//       products,
-//     },
-//   };
-// };
 
 export default Home;

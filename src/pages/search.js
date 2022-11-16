@@ -11,7 +11,7 @@ import CategoryCarousel from '@component/carousel/CategoryCarousel';
 import { SidebarContext } from '@context/SidebarContext';
 import Loading from '@component/preloader/Loading';
 
-const Search = ({ products }) => {
+const Search = ({ products, totalCount }) => {
   const { isLoading, setIsLoading } = useContext(SidebarContext);
 
   const [visibleProduct, setVisibleProduct] = useState(18);
@@ -21,7 +21,6 @@ const Search = ({ products }) => {
     setIsLoading(false);
   }, [products]);
 
-  // console.log(visibleProduct, "visibleProduct");
 
   return (
     <Layout title="Search" description="This is search page">
@@ -51,7 +50,7 @@ const Search = ({ products }) => {
                 <div className="flex justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
                   <h6 className="text-base font-serif">
                     Total{' '}
-                    <span className="font-bold">{productData.length}</span>{' '}
+                    <span className="font-bold">{totalCount}</span>{' '}
                     items Found
                   </h6>
                   <span className="text-base font-serif">
@@ -108,36 +107,46 @@ export const getServerSideProps = async (context) => {
   const { category } = context.query;
   const data = await ProductServices.getShowingProducts();
   let products = [];
+  let totalCount = 0;
   //service filter with parent category
   if (Category) {
-    products = data.filter(
-      (product) =>
-        product.parent.toLowerCase().replace('&', '').split(' ').join('-') ===
-        Category
-    );
+    // products = data.filter(
+    //   (product) =>
+    //     product.parent.toLowerCase().replace('&', '').split(' ').join('-') ===
+    //     Category
+    // );
+    // totalCount = products.length;
+    const result = await ProductServices.getProducts({children: Category.toUpperCase().replace('@', '&').split('-').join(' '), limit:200});
+    products = Array.from(result.products);
+    totalCount = result.totalDoc;
   }
   //service filter with child category
   if (category) {
-    products = data.filter(
-      (product) =>
-        product.children.toLowerCase().replace('&', '').split(' ').join('-') ===
-        category
-    );
+    // products = data.filter(
+    //   (product) =>
+    //     product.children.toLowerCase().replace('&', '').split(' ').join('-') ===
+    //     category
+    // );
+    const result = await ProductServices.getProducts({children: category.toUpperCase().replace('@', '&').split('-').join(' '), limit:200});
+    products = Array.from(result.products);
+    totalCount = result.totalDoc;
   }
 
   //search result
   if (query) {
     
-    const result = await ProductServices.getProducts({ title: query, limit: 1000 });
-    products = Array.from(result.products)
+    const result = await ProductServices.getProducts({ title: query, limit: 200 });
+    products = Array.from(result.products);
     // products = data.filter((product) =>
     //   product.title.toLowerCase().includes(query.toLowerCase())
     // );
+    totalCount = products.length;
   }
 
   return {
     props: {
       products,
+      totalCount,
     },
   };
 };

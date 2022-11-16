@@ -70,6 +70,39 @@ const pages = [
   },
 ];
 
+const sidebarPages = [
+  {
+    title: 'FAQ',
+    href: '/faq',
+    icon: FiHelpCircle,
+  },
+  {
+    title: 'About Us',
+    href: '/about-us',
+    icon: HiOutlineUserGroup,
+  },
+  {
+    title: 'Contact Us',
+    href: '/contact-us',
+    icon: HiOutlinePhoneIncoming,
+  },
+  {
+    title: 'Privacy Policy',
+    href: '/privacy-policy',
+    icon: HiOutlineShieldCheck,
+  },
+  {
+    title: 'Terms & Conditions',
+    href: '/terms-and-conditions',
+    icon: HiOutlineDocumentText,
+  },
+  {
+    title: '404',
+    href: '/404',
+    icon: FiAlertCircle,
+  },
+];
+
 const userSidebar = [
   {
     title: 'Dashboard',
@@ -206,4 +239,5 @@ export {
   ctaCardData,
   featurePromo,
   contactData,
+  sidebarPages,
 };

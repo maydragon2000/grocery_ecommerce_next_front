@@ -441,6 +441,7 @@ p:not(:last-of-type) {
   }
 } */
 
+
 @media (max-width:640px){
   .footer_hidden_bottom{
     height:64px;

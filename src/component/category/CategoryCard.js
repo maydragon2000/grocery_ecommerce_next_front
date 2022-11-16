@@ -16,21 +16,23 @@ const CategoryCard = ({ title, icon, nested }) => {
   const router = useRouter();
   const { closeCategoryDrawer } = useContext(SidebarContext);
 
-  const handleSubCategory = (children) => {
+  const handleSubCategory = () => {
     router.push(
-      `/search?category=${children
+      `/search?category=${title
         .toLowerCase()
-        .replace('&', '')
+        .replace('&', '@')
         .split(' ')
         .join('-')}`
-    );
-    closeCategoryDrawer();
+    )
+    .then(() => {
+      closeCategoryDrawer();
+    })
   };
 
   return (
     <>
       <a
-        onClick={showCategory}
+        onClick={handleSubCategory}
         className="p-2 flex items-center rounded-md hover:bg-gray-50 w-full hover:text-emerald-600"
         role="button"
       >
@@ -44,11 +46,12 @@ const CategoryCard = ({ title, icon, nested }) => {
         <div className="inline-flex items-center justify-between ml-3 text-base font-medium w-full hover:text-emerald-600">
           {title}
           <span className="transition duration-700 ease-in-out inline-flex loading-none items-end text-gray-400">
-            {show ? <IoChevronDownOutline /> : <IoChevronForwardOutline />}
+          <IoChevronForwardOutline />
+            {/* {show ? <IoChevronDownOutline /> : <IoChevronForwardOutline />} */}
           </span>
         </div>
       </a>
-      {show ? (
+      {/* {show ? (
         <ul className="pl-6 pb-3 pt-1 -mt-1">
           {nested.map((children) => (
             <li key={children}>
@@ -64,7 +67,7 @@ const CategoryCard = ({ title, icon, nested }) => {
             </li>
           ))}
         </ul>
-      ) : null}
+      ) : null} */}
     </>
   );
 };

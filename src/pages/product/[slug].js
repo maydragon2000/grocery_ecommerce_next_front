@@ -66,7 +66,7 @@ const ProductScreen = ({ product, relatedProduct }) => {
                     <Link
                       href={`/search?category=${product.children
                         .toLowerCase()
-                        .replace('&', '')
+                        .replace('&', '@')
                         .split(' ')
                         .join('-')}`}
                     >
@@ -287,42 +287,42 @@ const ProductScreen = ({ product, relatedProduct }) => {
   };
 
 /*  use getStaticPaths and getStaticProps when in production this will make faster load data
- *//* 
-export const getStaticProps = async (context) => {
-  const { slug } = context.params;
-    const product = await ProductServices.getProductBySlug(slug);
-    const products = await ProductServices.getShowingProducts();
-
-  const [product, products] = await Promise.all([
-    ProductServices.getProductBySlug(slug),
-    ProductServices.getShowingProducts(),
-  ]);
-
-  let relatedProduct = [];
-  if (slug) {
-    const selectProduct = products.find((product) => product.slug === slug);
-    relatedProduct = products.filter(
-      (product) => product.children === selectProduct.children
-    );
-  }
-
-  return {
-    props: {
-      product,
-      relatedProduct,
-    },
-    revalidate: 60,
-  };
-};
  */
-/* export const getStaticPaths = async () => {
-  const products = await ProductServices.getShowingProducts();
+// export const getStaticProps = async (context) => {
+//   const { slug } = context.params;
+//     const product = await ProductServices.getProductBySlug(slug);
+//     const products = await ProductServices.getShowingProducts();
 
-  const paths = products.map((product) => ({
-    params: { slug: product.slug },
-  }));
+  // const [product, products] = await Promise.all([
+  //   ProductServices.getProductBySlug(slug),
+  //   ProductServices.getShowingProducts(),
+  // ]);
 
-  return { paths, fallback: true };
-};
- */
+  // let relatedProduct = [];
+//   if (slug) {
+//     const selectProduct = products.find((product) => product.slug === slug);
+//     relatedProduct = products.filter(
+//       (product) => product.children === selectProduct.children
+//     );
+//   }
+
+//   return {
+//     props: {
+//       product,
+//       relatedProduct,
+//     },
+//     revalidate: 60,
+//   };
+// };
+
+// export const getStaticPaths = async () => {
+//   const products = await ProductServices.getShowingProducts();
+
+//   const paths = products.map((product) => ({
+//     params: { slug: product.slug },
+//   }));
+
+//   return { paths, fallback: true };
+// };
+ 
 export default ProductScreen;

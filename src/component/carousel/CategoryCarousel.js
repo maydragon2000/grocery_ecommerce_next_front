@@ -24,7 +24,7 @@ const CategoryCarousel = () => {
     router.push(
       `/search?Category=${category
         .toLowerCase()
-        .replace('&', '')
+        .replace('&', '@')
         .split(' ')
         .join('-')}`
     );
@@ -112,7 +112,7 @@ const CategoryCarousel = () => {
                   </div>
 
                   <h3 className="text-xs text-gray-600 mt-2 font-serif group-hover:text-primary">
-                    {category.parent.toLowerCase()}
+                    {category.parent}
                   </h3>
                 </div>
               </SwiperSlide>
